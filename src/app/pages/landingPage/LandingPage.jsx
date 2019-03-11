@@ -34,7 +34,7 @@ class LandingPage extends Component {
     const { anything } = this.state;
     console.log(anything)
     return (
-      <Flex wrap align='center' w={1} p={1}>
+      <Flex wrap align='center' w={1} >
         {this.state.loading === true ?
           <Paper>Estoy cargando</Paper>
           : (anything.map(row => (
@@ -48,9 +48,9 @@ class LandingPage extends Component {
                   <List>
                     <ListItem><Text content={`Id: ${row.id}`}/></ListItem><Divider />
                     <ListItem><Text content={`Nombre: ${row.name}`}/></ListItem><Divider />
-                    <ListItem><Text content={`Origen: ${row.origin.name}`}/></ListItem><Divider />
-                    <ListItem><Text content={`Especie: ${row.species}`}/></ListItem><Divider />
-                    <ListItem><Text content={`Estatus: ${row.status}`}/></ListItem>
+                    <ListItem><Text content={`Origen: ${(row.origin.name === 'unknown' ? 'Desconocido' : row.origin.name)}`}/></ListItem><Divider />
+                    <ListItem><Text content={`Especie: ${(row.species === 'unknown' ? 'Desconocido' : row.species)}`}/></ListItem><Divider />
+                    <ListItem><Text content={`Estatus: ${(row.status === 'unknown' ? 'Desconocido' : row.status)}`}/></ListItem>
                   </List>
                 </div>
               </Paper>
