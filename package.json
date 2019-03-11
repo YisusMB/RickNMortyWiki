@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "classnames": "^2.2.6",
     "grommet": "^2.5.5",
     "grommet-icons": "^4.2.0",
     "react": "^16.8.4",
