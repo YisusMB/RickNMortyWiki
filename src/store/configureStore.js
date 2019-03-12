@@ -16,5 +16,5 @@ export const configureStore = (initialState, history) => {
 }
 
 export const defaultState = {
-  loading: true
+  loading: false
 }

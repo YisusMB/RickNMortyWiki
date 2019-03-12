@@ -38,8 +38,7 @@ class LandingPage extends Component {
   };
 
   render() {
-    const { characters, episodes } = this.state;
-    console.log(episodes);
+    const { results } = this.state;
     return (
       this.state.loading === true ? (
         <Loader/>
@@ -55,7 +54,7 @@ class LandingPage extends Component {
                 <TextControlled content='CHECK OUT CHAPTERS'/>
               </Paper>
             </Box>
-            {characters.map((index, charactersData) => (
+            {results.map((index, charactersData) => (
               <CharacterContainer data={{charactersData, index}}/>
             ))}
           </Flex>
@@ -65,7 +64,7 @@ class LandingPage extends Component {
                 <TextControlled content='Check out characters'/>
               </Paper>
             </Box>
-            {episodes.map((index, episodesData) => (
+            {results.map((index, episodesData) => (
               <EpisodeContainer data={{episodesData, index}}/>
             ))}
           </Flex>
