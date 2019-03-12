@@ -6,7 +6,6 @@ import { Box } from "reflexbox";
 class EpisodeContainer extends Component {
   render(){
     const { episodesData, index } = this.props.data;
-    console.log(this.props)
     return (
       <Box key={`key_${episodesData.id}`} className={`BoxCharacter_${episodesData.id}`} w={[ 1, 1/2 ]} p={1}>
         <Paper>

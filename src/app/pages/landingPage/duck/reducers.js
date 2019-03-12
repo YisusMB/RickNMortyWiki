@@ -22,7 +22,6 @@ const fetchCharacters = (state = INITIAL_STATE, { url }) => ({
 const fetchChaptersSuccess = (state = INITIAL_STATE, { chapters }) => ({
   ...state,
   chapters,
-  loading: false,
 })
 
 const fetchCharactersSuccess = (state = INITIAL_STATE, { characters }) => ({

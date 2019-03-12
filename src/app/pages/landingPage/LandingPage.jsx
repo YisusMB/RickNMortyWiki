@@ -50,7 +50,9 @@ class LandingPage extends Component {
             <Box w={1}>
               <WelcomeHeader />
             </Box>
-          <Flex wrap align='center' w={[1, 1/2]}>
+          </Flex>
+          <Flex wrap align='baseline' w={1}>
+            <Flex wrap w={[1, 1/2]}>
             <Box w={1} p={1}>
               <Paper>
                 <TextControlled content='CHECK OUT CHAPTERS'/>
@@ -59,10 +61,19 @@ class LandingPage extends Component {
             {chapters.results.map((episodesData, index) => (
               <EpisodeContainer data={{episodesData, index}}/>
             ))}
+            </Flex>
+            <Flex wrap w={[1, 1/2]}>
+              <Box w={1} p={1}>
+                <Paper>
+                  <TextControlled content='Check out characters'/>
+                </Paper>
+              </Box>
+              {characters.results.map((charactersData, index) => (
+                <CharacterContainer data={{charactersData, index}}/>
+              ))}
+            </Flex>
+            </Flex>
           </Flex>
-
-          </Flex>
-        </Flex>
         )
     )
   }

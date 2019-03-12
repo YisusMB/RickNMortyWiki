@@ -5,19 +5,19 @@ import { Box } from "reflexbox";
 
 class CharacterContainer extends Component {
   render(){
-    const { data, index } = this.props;
+    const { charactersData, index } = this.props.data;
     return (
-      <Box key={`key_${data.id}`} className={`BoxCharacter_${data.id}`} w={[ 1, 1/2 ]} p={1}>
+      <Box key={`key_${charactersData.id}`} className={`BoxCharacter_${charactersData.id}`} w={[ 1, 1/2 ]} p={1}>
         <Paper>
           <div>
-            <img alt={`character_${data.name}`} src={data.image}/>
+            <img alt={`character_${charactersData.name}`} src={charactersData.image}/>
             <List>
               <Divider/>
-              <ListItem key={`idCharacter_${index}`}><Text content={`Id: ${data.id}`}/></ListItem><Divider />
-              <ListItem key={`characterName_${index}`}><Text content={`Nombre: ${data.name}`}/></ListItem><Divider />
-              <ListItem key={`characterOrigin_${index}`}><Text content={`Origen: ${(data.origin.name === 'unknown' ? 'Desconocido' : data.origin.name)}`}/></ListItem><Divider />
-              <ListItem key={`characterSpecies_${index}`}><Text content={`Especie: ${(data.species === 'unknown' ? 'Desconocido' : data.species)}`}/></ListItem><Divider />
-              <ListItem key={`characterStatus_${index}`}><Text content={`Estatus: ${(data.status === 'unknown' ? 'Desconocido' : data.status)}`}/></ListItem>
+              <ListItem key={`idCharacter_${index}`}><Text content={`Id: ${charactersData.id}`}/></ListItem><Divider />
+              <ListItem key={`characterName_${index}`}><Text content={`Nombre: ${charactersData.name}`}/></ListItem><Divider />
+              <ListItem key={`characterOrigin_${index}`}><Text content={`Origen: ${(charactersData.origin.name === 'unknown' ? 'Desconocido' : charactersData.origin.name)}`}/></ListItem><Divider />
+              <ListItem key={`characterSpecies_${index}`}><Text content={`Especie: ${(charactersData.species === 'unknown' ? 'Desconocido' : charactersData.species)}`}/></ListItem><Divider />
+              <ListItem key={`characterStatus_${index}`}><Text content={`Estatus: ${(charactersData.status === 'unknown' ? 'Desconocido' : charactersData.status)}`}/></ListItem>
             </List>
           </div>
         </Paper>
