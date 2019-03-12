@@ -3,7 +3,7 @@ import { Text } from 'grommet'
 
 class TextControlled extends Component {
   render() {
-    const { content } = this.props
+    const { content } = this.props;
     return (
       <Text>
         {content}
