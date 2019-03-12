@@ -1,54 +1,77 @@
 import React, { Component } from 'react'
-import { Flex } from 'reflexbox'
+import { connect } from 'react-redux'
+import { landingPageCreators } from './duck'
+
+import { Flex, Box } from 'reflexbox'
+import { Paper } from '@material-ui/core'
 
 import Loader from "../../components/Loader"
 import CharacterContainer from '../../components/controlled/CharacterContainer'
 import WelcomeHeader from '../../components/WelcomeHeader'
+import TextControlled from "../../components/controlled/TextControlled"
+import EpisodeContainer from "../../components/controlled/EpisodeContainer"
 
+const state = state => ({
+  characters: state.landingPage.characters,
+  chapters: state.landingPage.chapters,
+  error: state.landingPage.error
+});
+
+const dispatch = {
+  getChapters: landingPageCreators.fetchChapters,
+  getCharacters: landingPageCreators.fetchCharacters,
+};
+
+const INITIAL_STATE = {
+  characters: [],
+  chapters: [],
+  loading: true
+};
+
+@connect(state, dispatch)
 class LandingPage extends Component {
-  state = {
-    loading: false,
-    anything: [],
-    promptMessage: '',
-    url: 'https://rickandmortyapi.com/api/character/'
-  };
+  state = INITIAL_STATE;
 
   componentDidMount(){
-    this.getResults();
-  };
-
-  getResults = () => {
-    this.setState({
-      loading: true
-    });
-    fetch(this.state.url)
-      .then(res=>res.json())
-      .then(res=>{
-        this.setState({
-          anything: res.results,
-          loading: false
-        })
-      })
+    this.props.getChapters();
+    this.props.getCharacters();
   };
 
   render() {
-    const { anything } = this.state;
-    console.log(anything);
+    const { characters, episodes } = this.state;
+    console.log(episodes);
     return (
-      <div>
-      <Flex wrap align='center' w={1} >
-        {this.state.loading === true ? (
-          <Loader/>
-        ) : (
-          <div>
-            <WelcomeHeader />
-          </div>
-          && anything.map(characterData => (
-            <CharacterContainer data={characterData}/>
-        ))
-        )}
-      </Flex>
-      </div>
+      this.state.loading === true ? (
+        <Loader/>
+      ) : (
+        <Flex wrap align='center' w={1} >
+          <Flex wrap align='center' w={1}>
+            <Box w={1}>
+              <WelcomeHeader />
+            </Box>
+          <Flex wrap align='center' w={[1, 1/2]}>
+            <Box w={1} p={1}>
+              <Paper>
+                <TextControlled content='CHECK OUT CHAPTERS'/>
+              </Paper>
+            </Box>
+            {characters.map((index, charactersData) => (
+              <CharacterContainer data={{charactersData, index}}/>
+            ))}
+          </Flex>
+          <Flex wrap align='center' w={[1, 1/2]}>
+            <Box w={1} p={1}>
+              <Paper>
+                <TextControlled content='Check out characters'/>
+              </Paper>
+            </Box>
+            {episodes.map((index, episodesData) => (
+              <EpisodeContainer data={{episodesData, index}}/>
+            ))}
+          </Flex>
+          </Flex>
+        </Flex>
+        )
     )
   }
 }

@@ -3,11 +3,22 @@ import { Text } from 'grommet'
 
 class TextControlled extends Component {
   render() {
-    const { content } = this.props;
+    const { content, padding, margin, needStyle } = this.props;
+    console.log(this.props)
     return (
-      <Text>
-        {content}
-      </Text>
+      needStyle ? (
+      <div style={padding === undefined ? {} : padding ? padding : {}}>
+        <Text
+          margin={margin === undefined ? {} : margin ? margin : {}}
+        >
+          {content}
+        </Text>
+      </div>
+      ) : (
+        <Text>
+          {content}
+        </Text>
+      )
     )
   }
 }

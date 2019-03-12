@@ -5,18 +5,19 @@ import { Box } from "reflexbox";
 
 class CharacterContainer extends Component {
   render(){
-    const { data } = this.props;
+    const { data, index } = this.props;
     return (
-      <Box key={`key_${data.id}`} className={`BoxCharacter_${data.id}`} w={[ 1, 1/2, 1/4 ]} p={1}>
+      <Box key={`key_${data.id}`} className={`BoxCharacter_${data.id}`} w={[ 1, 1/2 ]} p={1}>
         <Paper>
           <div>
+            <img alt={`character_${data.name}`} src={data.image}/>
             <List>
-              <ListItem><img style={{ display: 'block', maxWidth: '100%' }} alt={`character_${data.name}`} src={data.image}/></ListItem><Divider/>
-              <ListItem><Text content={`Id: ${data.id}`}/></ListItem><Divider />
-              <ListItem><Text content={`Nombre: ${data.name}`}/></ListItem><Divider />
-              <ListItem><Text content={`Origen: ${(data.origin.name === 'unknown' ? 'Desconocido' : data.origin.name)}`}/></ListItem><Divider />
-              <ListItem><Text content={`Especie: ${(data.species === 'unknown' ? 'Desconocido' : data.species)}`}/></ListItem><Divider />
-              <ListItem><Text content={`Estatus: ${(data.status === 'unknown' ? 'Desconocido' : data.status)}`}/></ListItem>
+              <Divider/>
+              <ListItem key={`idCharacter_${index}`}><Text content={`Id: ${data.id}`}/></ListItem><Divider />
+              <ListItem key={`characterName_${index}`}><Text content={`Nombre: ${data.name}`}/></ListItem><Divider />
+              <ListItem key={`characterOrigin_${index}`}><Text content={`Origen: ${(data.origin.name === 'unknown' ? 'Desconocido' : data.origin.name)}`}/></ListItem><Divider />
+              <ListItem key={`characterSpecies_${index}`}><Text content={`Especie: ${(data.species === 'unknown' ? 'Desconocido' : data.species)}`}/></ListItem><Divider />
+              <ListItem key={`characterStatus_${index}`}><Text content={`Estatus: ${(data.status === 'unknown' ? 'Desconocido' : data.status)}`}/></ListItem>
             </List>
           </div>
         </Paper>
