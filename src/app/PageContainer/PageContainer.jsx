@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, CssBaseline } from "@material-ui/core";
 import {
+  Home as HomeIcon,
   Menu as MenuIcon,
   Search as SearchIcon,
   ChevronRight as ChevronRightIcon,
   ChevronLeft as ChevronLeftIcon
 } from '@material-ui/icons'
 import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 
 import LandingPage from '../pages/landingPage/LandingPage'
 import Root from '../Root'
@@ -107,7 +109,9 @@ class PersistentDrawerLeft extends Component {
             >
               <MenuIcon />
             </IconButton>
+            <Link to=''>
             <img alt='Logo' src={logo} style={{ maxHeight: '6vh' }} />
+            </Link>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -125,10 +129,21 @@ class PersistentDrawerLeft extends Component {
             </IconButton>
           </div>
           <List>
+            <Divider/>
+            <Link to='' style={{ textDecoration: 'none' }}>
+              <ListItem button key='home'>
+                <ListItemIcon><HomeIcon /></ListItemIcon>
+                <ListItemText primary='Inicio' />
+              </ListItem>
+            </Link>
+            <Divider />
+            <Link to='/search' style={{ textDecoration: 'none' }}>
             <ListItem button key='search'>
               <ListItemIcon><SearchIcon /></ListItemIcon>
-              <ListItemText primary='searchItem' />
+              <ListItemText primary='Busqueda' />
             </ListItem>
+          </Link>
+            <Divider/>
           </List>
         </Drawer>
         <main
