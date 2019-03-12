@@ -2,11 +2,11 @@ import { createReducer } from 'reduxsauce'
 import { Types } from './operations'
 
 const INITIAL_STATE = {
-  all: {},
   chapters: [],
   characters: [],
   success: false,
   error: false,
+  loading: true
 }
 
 const fetchChapters = (state = INITIAL_STATE, { url }) => ({
@@ -21,12 +21,14 @@ const fetchCharacters = (state = INITIAL_STATE, { url }) => ({
 
 const fetchChaptersSuccess = (state = INITIAL_STATE, { chapters }) => ({
   ...state,
-  chapters
+  chapters,
+  loading: false,
 })
 
 const fetchCharactersSuccess = (state = INITIAL_STATE, { characters }) => ({
   ...state,
-  characters
+  characters,
+  loading: false,
 })
 
 const error = (state = INITIAL_STATE) => ({

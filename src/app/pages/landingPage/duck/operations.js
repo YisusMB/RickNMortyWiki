@@ -2,8 +2,8 @@ import { createActions } from 'reduxsauce'
 
 const { Types, Creators } = createActions({
   fetchChapters: [''],
-  fetchChaptersSuccess: ['chapters'],
   fetchCharacters: [''],
+  fetchChaptersSuccess: ['chapters'],
   fetchCharactersSuccess: ['characters'],
   error: ['']
 }, {

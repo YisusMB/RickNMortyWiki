@@ -4,7 +4,6 @@ import { Text } from 'grommet'
 class TextControlled extends Component {
   render() {
     const { content, padding, margin, needStyle } = this.props;
-    console.log(this.props)
     return (
       needStyle ? (
       <div style={padding === undefined ? {} : padding ? padding : {}}>

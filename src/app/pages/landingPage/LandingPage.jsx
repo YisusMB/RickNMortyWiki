@@ -14,7 +14,8 @@ import EpisodeContainer from "../../components/controlled/EpisodeContainer"
 const state = state => ({
   characters: state.landingPage.characters,
   chapters: state.landingPage.chapters,
-  error: state.landingPage.error
+  error: state.landingPage.error,
+  loading: state.landingPage.loading
 });
 
 const dispatch = {
@@ -38,9 +39,10 @@ class LandingPage extends Component {
   };
 
   render() {
-    const { results } = this.state;
+    const { chapters, characters, loading } = this.props;
+
     return (
-      this.state.loading === true ? (
+      loading === true ? (
         <Loader/>
       ) : (
         <Flex wrap align='center' w={1} >
@@ -54,20 +56,11 @@ class LandingPage extends Component {
                 <TextControlled content='CHECK OUT CHAPTERS'/>
               </Paper>
             </Box>
-            {results.map((index, charactersData) => (
-              <CharacterContainer data={{charactersData, index}}/>
-            ))}
-          </Flex>
-          <Flex wrap align='center' w={[1, 1/2]}>
-            <Box w={1} p={1}>
-              <Paper>
-                <TextControlled content='Check out characters'/>
-              </Paper>
-            </Box>
-            {results.map((index, episodesData) => (
+            {chapters.results.map((episodesData, index) => (
               <EpisodeContainer data={{episodesData, index}}/>
             ))}
           </Flex>
+
           </Flex>
         </Flex>
         )
