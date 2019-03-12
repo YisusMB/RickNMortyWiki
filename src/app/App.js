@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
-import './App.css';
-import PageContainer from "./PageContainer/PageContainer";
-import Provider from "react-redux/es/components/Provider";
+import React, { Component } from 'react'
+import './App.css'
+import { Provider } from 'react-redux'
+import { createBrowserHistory } from 'history'
 import { configureStore, defaultState } from '../store/configureStore'
-const store = configureStore(defaultState)
+import history from '../store/history'
+import PageContainer from './PageContainer/PageContainer'
+
+const store = configureStore(defaultState, history);
 
 class App extends Component {
   render() {

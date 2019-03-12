@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
-import LandingPage from '../pages/landingPage/LandingPage'
-
-import logo from '../assets/img/logo.png'
-
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, CssBaseline } from "@material-ui/core";
 import {
   Menu as MenuIcon,
-  Mail as MailIcon,
-  Inbox as InboxIcon,
+  Search as SearchIcon,
   ChevronRight as ChevronRightIcon,
   ChevronLeft as ChevronLeftIcon
 } from '@material-ui/icons'
 import classNames from 'classnames'
+
+import LandingPage from '../pages/landingPage/LandingPage'
+import Root from '../Root'
+import logo from '../assets/img/logo.png'
 
 const drawerWidth = 240;
 
@@ -125,23 +124,11 @@ class PersistentDrawerLeft extends Component {
               {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
             </IconButton>
           </div>
-          <Divider />
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            <ListItem button key='search'>
+              <ListItemIcon><SearchIcon /></ListItemIcon>
+              <ListItemText primary='searchItem' />
+            </ListItem>
           </List>
         </Drawer>
         <main
@@ -150,7 +137,7 @@ class PersistentDrawerLeft extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          <LandingPage/>
+          <Root />
         </main>
       </div>
     );
