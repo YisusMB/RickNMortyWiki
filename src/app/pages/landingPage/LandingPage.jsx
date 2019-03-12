@@ -55,7 +55,7 @@ class LandingPage extends Component {
             <Flex wrap w={[1, 1/2]}>
             <Box w={1} p={1}>
               <Paper>
-                <TextControlled content='CHECK OUT CHAPTERS'/>
+                <TextControlled needStyle padding={{padding: '10px'}} content='CHECK OUT CHAPTERS'/>
               </Paper>
             </Box>
             {chapters.results.map((episodesData, index) => (
@@ -65,7 +65,7 @@ class LandingPage extends Component {
             <Flex wrap w={[1, 1/2]}>
               <Box w={1} p={1}>
                 <Paper>
-                  <TextControlled content='Check out characters'/>
+                  <TextControlled needStyle padding={{padding: '10px'}} content='CHECK OUT CHARACTERS'/>
                 </Paper>
               </Box>
               {characters.results.map((charactersData, index) => (
