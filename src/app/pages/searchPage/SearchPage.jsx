@@ -19,8 +19,7 @@ const state = state => ({
 });
 
 const dispatch = {
-  getChapters: searchPageCreators.fetchChapters,
-  getCharacters: searchPageCreators.fetchCharacters,
+  getData: searchPageCreators.fetchData
 };
 
 const INITIAL_STATE = {
@@ -34,8 +33,7 @@ class searchPage extends Component {
   state = INITIAL_STATE;
 
   componentDidMount(){
-    this.props.getChapters();
-    this.props.getCharacters();
+    this.props.getData();
   };
 
   render() {

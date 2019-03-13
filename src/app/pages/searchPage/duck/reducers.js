@@ -9,25 +9,16 @@ const INITIAL_STATE = {
   loading: true
 }
 
-const fetchChapters = (state = INITIAL_STATE, { url }) => ({
+const fetchData = (state = INITIAL_STATE) => ({
   ...state,
-  url
+  loading: true
 })
 
-const fetchCharacters = (state = INITIAL_STATE, { url }) => ({
-  ...state,
-  url
-})
-
-const fetchChaptersSuccess = (state = INITIAL_STATE, { chapters }) => ({
+const fetchDataSuccess = (state = INITIAL_STATE, {chapters, characters}) => ({
   ...state,
   chapters,
-})
-
-const fetchCharactersSuccess = (state = INITIAL_STATE, { characters }) => ({
-  ...state,
   characters,
-  loading: false,
+  loading: false
 })
 
 const error = (state = INITIAL_STATE) => ({
@@ -37,10 +28,8 @@ const error = (state = INITIAL_STATE) => ({
 })
 
 const HANDLERS = {
-  [Types.FETCH_CHAPTERS]: fetchChapters,
-  [Types.FETCH_CHAPTERS_SUCCESS]: fetchChaptersSuccess,
-  [Types.FETCH_CHARACTERS]: fetchCharacters,
-  [Types.FETCH_CHARACTERS_SUCCESS]: fetchCharactersSuccess,
+  [Types.FETCH_DATA]: fetchData,
+  [Types.FETCH_DATA_SUCCESS]: fetchDataSuccess,
   [Types.ERROR]: error
 }
 
