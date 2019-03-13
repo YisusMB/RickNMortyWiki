@@ -10,7 +10,7 @@ class CharacterContainer extends Component {
       <Box key={`key_${charactersData.id}`} className={`BoxCharacter_${charactersData.id}`} w={[ 1, 1/2 ]} p={1}>
         <Paper>
           <div>
-            <img alt={`character_${charactersData.name}`} src={charactersData.image}/>
+            <img style={{ margin: 'auto', maxWidth: '100%' }} alt={`character_${charactersData.name}`} src={charactersData.image}/>
             <List>
               <Divider/>
               <ListItem key={`idCharacter_${index}`}><Text content={`Id: ${charactersData.id}`}/></ListItem><Divider />

@@ -12,11 +12,10 @@ class EpisodeContainer extends Component {
           <div>
             <List>
               <Divider/>
-              <ListItem key={`idCharacter_${index}`}><Text content={`Id: ${episodesData.id}`}/></ListItem><Divider />
-              <ListItem key={`characterName_${index}`}><Text content={`Nombre: ${episodesData.air_date}`}/></ListItem><Divider />
-              <ListItem key={`characterOrigin_${index}`}><Text content={`Origen: ${episodesData.episode}`}/></ListItem><Divider />
-              <ListItem key={`characterSpecies_${index}`}><Text content={`Especie: ${episodesData.url}`}/></ListItem><Divider />
-              <ListItem key={`characterStatus_${index}`}><Text content={`Estatus: ${episodesData.created}`}/></ListItem>
+              <ListItem style={{ maxWidth: '100%' }} key={`idCharacter_${index}`}><Text content={`Nombre: ${episodesData.name}`}/></ListItem><Divider />
+              <ListItem style={{ maxWidth: '100%' }} key={`characterName_${index}`}><Text content={`Episodio #${episodesData.id}`}/></ListItem><Divider />
+              <ListItem style={{ maxWidth: '100%' }} key={`characterOrigin_${index}`}><Text content={`Se transmitio: ${episodesData.air_date}`}/></ListItem><Divider />
+              {/*<ListItem style={{ maxWidth: '100%' }} key={`characterSpecies_${index}`}><Text content={`Especie: ${episodesData.url}`}/></ListItem><Divider />*/}
             </List>
           </div>
         </Paper>
