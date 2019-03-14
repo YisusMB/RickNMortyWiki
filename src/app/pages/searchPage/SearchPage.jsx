@@ -184,95 +184,95 @@ class searchPage extends Component {
                     <Box w={1}>
                       {toggledChapters === true ? (
                         <ExpansionPanelSummary>
-                      <Button onClick={this.closeToggleChapters} variant='contained' size='large'>
-                        Cerrar capitulos
-                      </Button>
+                          <Button onClick={this.closeToggleChapters} variant='contained' size='large'>
+                            Cerrar capitulos
+                          </Button>
                         </ExpansionPanelSummary>
                       ) : toggledCharacters === true ? (
                         <ExpansionPanelSummary>
                           <Flex wrap w={1} p={1}>
-                          <Box w={[1, 3/4]} p={1}>
-                          <form className={classes.container} noValidate autoComplete="off">
-                            <TextField
-                              id="outlined-name"
-                              label="Nombre"
-                              className={classes.textField}
-                              value={characterForm.name}
-                              onChange={this.handleChange('name')}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                            <TextField
-                              id="outlined-name"
-                              style={{ width: '22vh'}}
-                              select
-                              label="Estatus"
-                              className={classes.textField}
-                              value={characterForm.status}
-                              onChange={this.handleChange('status')}
-                              margin="normal"
-                              variant="outlined"
-                            >
-                              {states.map(option => (
-                                <MenuItem key={option.value} value={option.value}>
-                                  {option.label}
-                                </MenuItem>
-                              ))}
-                            </TextField>
-                            <TextField
-                              id="outlined-name"
-                              label="Genero"
-                              style={{ width: '22vh'}}
-                              select
-                              className={classes.textField}
-                              value={characterForm.gender}
-                              onChange={this.handleChange('gender')}
-                              SelectProps={{
-                                MenuProps: {
-                                  className: classes.menu,
-                                }
-                              }}
-                              margin="normal"
-                              variant="outlined"
-                            >
-                              {genders.map(option => (
-                                <MenuItem key={option.value} value={option.value}>
-                                  {option.label}
-                                </MenuItem>
-                              ))}
-                            </TextField>
-                            <TextField
-                              id="outlined-name"
-                              label="Tipo"
-                              className={classes.textField}
-                              value={characterForm.type}
-                              onChange={this.handleChange('type')}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                            <TextField
-                              id="outlined-name"
-                              label="Especie"
-                              className={classes.textField}
-                              value={characterForm.specie}
-                              onChange={this.handleChange('specie')}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                          </form>
-                          </Box>
-                          <Box w={[1,1/8]} pt={[1,3]}>
-                            <Button color='primary' variant='contained' size='large' onClick={()=>this.searchCharacter(characterForm)}>
-                              Buscar
-                              <SearchIcon />
-                            </Button>
-                          </Box>
+                            <Box w={[1, 3/4]} p={1}>
+                              <form className={classes.container} noValidate autoComplete="off">
+                                <TextField
+                                  id="outlined-name"
+                                  label="Nombre"
+                                  className={classes.textField}
+                                  value={characterForm.name}
+                                  onChange={this.handleChange('name')}
+                                  margin="normal"
+                                  variant="outlined"
+                                />
+                                <TextField
+                                  id="outlined-name"
+                                  style={{ width: '22vh'}}
+                                  select
+                                  label="Estatus"
+                                  className={classes.textField}
+                                  value={characterForm.status}
+                                  onChange={this.handleChange('status')}
+                                  margin="normal"
+                                  variant="outlined"
+                                >
+                                  {states.map(option => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                      {option.label}
+                                    </MenuItem>
+                                  ))}
+                                </TextField>
+                                <TextField
+                                  id="outlined-name"
+                                  label="Genero"
+                                  style={{ width: '22vh'}}
+                                  select
+                                  className={classes.textField}
+                                  value={characterForm.gender}
+                                  onChange={this.handleChange('gender')}
+                                  SelectProps={{
+                                    MenuProps: {
+                                      className: classes.menu,
+                                    }
+                                  }}
+                                  margin="normal"
+                                  variant="outlined"
+                                >
+                                  {genders.map(option => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                      {option.label}
+                                    </MenuItem>
+                                  ))}
+                                </TextField>
+                                <TextField
+                                  id="outlined-name"
+                                  label="Tipo"
+                                  className={classes.textField}
+                                  value={characterForm.type}
+                                  onChange={this.handleChange('type')}
+                                  margin="normal"
+                                  variant="outlined"
+                                />
+                                <TextField
+                                  id="outlined-name"
+                                  label="Especie"
+                                  className={classes.textField}
+                                  value={characterForm.specie}
+                                  onChange={this.handleChange('specie')}
+                                  margin="normal"
+                                  variant="outlined"
+                                />
+                              </form>
+                            </Box>
                             <Box w={[1,1/8]} pt={[1,3]}>
-                        <Button variant='contained' size='large' onClick={this.closeToggleCharacters}>
-                          Cancelar
-                          <ClearIcon />
-                        </Button>
-                          </Box>
+                              <Button color='primary' variant='contained' size='large' onClick={()=>this.searchCharacter(characterForm)}>
+                                Buscar
+                                <SearchIcon />
+                              </Button>
+                            </Box>
+                            <Box w={[1,1/8]} pt={[1,3]}>
+                              <Button variant='contained' size='large' onClick={this.closeToggleCharacters}>
+                                Cancelar
+                                <ClearIcon />
+                              </Button>
+                            </Box>
                           </Flex>
                         </ExpansionPanelSummary>
                       ) : <div /> }
