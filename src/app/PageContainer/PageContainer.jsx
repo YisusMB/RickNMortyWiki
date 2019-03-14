@@ -152,7 +152,9 @@ class PersistentDrawerLeft extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
+          <div>
           <Root />
+          </div>
         </main>
       </div>
     );

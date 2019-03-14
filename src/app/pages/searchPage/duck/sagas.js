@@ -17,8 +17,22 @@ function * fetchData () {
   }
 }
 
+function * fetchSearch (form) {
+  try {
+    const { name, status, gender, specie } = form;
+    const searchData = yield fetch(`https://rickandmortyapi.com/api/character/?${(name === '' ? '' : `name=${name}`)}&${(status === '' ? '' : `status=${status}`)}&${(gender === '' ? '' : `gender=${gender}`)}&${(specie === '' ? '' : `specie=${specie}`)}`).then(res=>res.json())
+    if (!searchData) {
+      return
+    }
+    yield put(Creators.fetchSearchSuccess(searchData))
+  } catch (error) {
+    console.info(error)
+  }
+}
+
 export default function * landingPageSaga () {
   yield all([
     takeEvery(Types.FETCH_DATA, fetchData),
+    takeEvery(Types.FETCH_SEARCH, fetchSearch)
   ])
 }

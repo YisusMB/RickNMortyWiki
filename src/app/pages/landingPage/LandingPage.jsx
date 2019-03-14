@@ -6,10 +6,10 @@ import { Flex, Box } from 'reflexbox'
 import { Paper } from '@material-ui/core'
 
 import Loader from "../../components/Loader"
-import CharacterContainer from '../../components/controlled/CharacterContainer'
+import CharacterContainer from '../../components/Controlled/CharacterContainer'
 import WelcomeHeader from '../../components/WelcomeHeader'
-import TextControlled from "../../components/controlled/TextControlled"
-import EpisodeContainer from "../../components/controlled/EpisodeContainer"
+import TextControlled from "../../components/Controlled/TextControlled"
+import EpisodeContainer from "../../components/Controlled/EpisodeContainer"
 
 const state = state => ({
   characters: state.landingPage.characters,
