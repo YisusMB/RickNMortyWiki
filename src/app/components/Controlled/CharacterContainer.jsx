@@ -7,7 +7,7 @@ class CharacterContainer extends Component {
   render(){
     const { charactersData, index } = this.props.data;
     return (
-      <Box key={`key_${charactersData.id}`} className={`BoxCharacter_${charactersData.id}`} w={[ 1, 1/2 ]} p={1}>
+      <Box key={`key_${charactersData.id}`} className={`BoxCharacter_${charactersData.id}`} w={[ 1, 1/2, 1/4 ]} p={1}>
         <Paper>
           <div>
             <img style={{ margin: 'auto', maxWidth: '100%' }} alt={`character_${charactersData.name}`} src={charactersData.image}/>

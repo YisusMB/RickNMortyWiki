@@ -1,22 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { searchPageCreators } from './duck'
-
-import { Flex, Box } from 'reflexbox'
-import { Paper, Button, ExpansionPanel, ExpansionPanelSummary, TextField, MenuItem } from '@material-ui/core'
-import { NewReleases, Search as SearchIcon, Clear as ClearIcon } from '@material-ui/icons'
+import {Box, Flex} from "reflexbox";
+import {Button, ExpansionPanel, ExpansionPanelSummary, Paper, TextField ,MenuItem} from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
 
-import Loader from "../../components/Loader"
-import WelcomeHeader from '../../components/WelcomeHeader'
-import CharacterContainer from "../../components/Controlled/CharacterContainer";
-import { Text } from "grommet";
+import { searchPageCreators } from "./duck";
 
 const genders = [
-  {
-    value: '',
-    label: '',
-  },
   {
     value: 'male',
     label: 'Masculino',
@@ -37,10 +27,6 @@ const genders = [
 
 const states = [
   {
-    value: '',
-    label: '',
-  },
-  {
     value: 'alive',
     label: 'Vivo',
   },
@@ -58,7 +44,6 @@ const state = state => ({
   characters: state.searchPage.characters,
   chapters: state.searchPage.chapters,
   searchData: state.searchPage.searchData,
-  success: state.searchPage.success,
   error: state.searchPage.error,
   loading: state.searchPage.loading
 });
@@ -102,12 +87,8 @@ const styles = theme => ({
 });
 
 @connect(state, dispatch)
-class searchPage extends Component {
+class SearchForm extends Component {
   state = INITIAL_STATE;
-
-  componentDidMount(){
-    this.props.getData();
-  };
 
   toggleSearchCharacters = () => {
     this.setState({
@@ -142,56 +123,47 @@ class searchPage extends Component {
     const value = e.target.value;
 
     this.setState(prevState => ({
-      characterForm: {
-        ...prevState.characterForm,
-        [name]: value
-      }
-    })
+        characterForm: {
+          ...prevState.characterForm,
+          [name]: value
+        }
+      })
     );
   };
 
   render() {
     const { toggledChapters, toggledCharacters, characterForm } = this.state;
-    const { loading, classes, searchData, success } = this.props;
+    const { classes } = this.props;
 
-    return (
-      loading === true ? (
-        <Loader/>
-      ) : (
-        <Flex wrap align='center' w={1} >
-          <Flex wrap align='center' w={1}>
-            <Box w={1}>
-              <WelcomeHeader PageTitle='Wanna search something?' />
-            </Box>
-          </Flex>
-          <Flex wrap align='baseline' w={1}>
-            <Box w={1} p={1}>
-              <Paper>
-                <Flex wrap align='baseline' w={1}>
-                  <Box w={1/2} p={1}>
-                    <Button variant="contained" size='large' onClick={this.toggleSearchCharacters} disabled={toggledChapters || toggledCharacters} color='secondary'>
-                      Personajes
-                    </Button>
-                  </Box>
-                  <Box w={1/2} p={1}>
-                    <Button variant='contained' size='large' onClick={this.toggleSearchChapters} disabled={toggledChapters || toggledCharacters} color='primary'>
-                      Capitulos
-                    </Button>
-                  </Box>
-                </Flex>
-                <ExpansionPanel expanded={toggledCharacters || toggledChapters}>
-                  <Flex>
-                    <Box w={1}>
-                      {toggledChapters === true ? (
-                        <ExpansionPanelSummary>
-                      <Button onClick={this.closeToggleChapters} variant='contained' size='large'>
+    return(
+      <Flex wrap align='baseline' w={1}>
+        <Box w={1} p={1}>
+          <Paper>
+            <Flex wrap align='baseline' w={1}>
+              <Box w={1/2} p={1}>
+                <Button onClick={this.toggleSearchCharacters} disabled={toggledChapters || toggledCharacters} color='secondary'>
+                  Personajes
+                </Button>
+              </Box>
+              <Box w={1/2} p={1}>
+                <Button onClick={this.toggleSearchChapters} disabled={toggledChapters || toggledCharacters} color='primary'>
+                  Capitulos
+                </Button>
+              </Box>
+            </Flex>
+            <ExpansionPanel expanded={toggledCharacters || toggledChapters}>
+              <Flex>
+                <Box w={1}>
+                  {toggledChapters === true ? (
+                    <ExpansionPanelSummary>
+                      <Button onClick={this.closeToggleChapters}>
                         Cerrar capitulos
                       </Button>
-                        </ExpansionPanelSummary>
-                      ) : toggledCharacters === true ? (
-                        <ExpansionPanelSummary>
-                          <Flex wrap w={1} p={1}>
-                          <Box w={[1, 3/4]} p={1}>
+                    </ExpansionPanelSummary>
+                  ) : toggledCharacters === true ? (
+                    <ExpansionPanelSummary>
+                      <Flex wrap w={1} p={1}>
+                        <Box w={[1, 3/4]} p={1}>
                           <form className={classes.container} noValidate autoComplete="off">
                             <TextField
                               id="outlined-name"
@@ -260,51 +232,26 @@ class searchPage extends Component {
                               variant="outlined"
                             />
                           </form>
-                          </Box>
-                          <Box w={[1,1/8]} pt={[1,3]}>
-                            <Button color='primary' variant='contained' size='large' onClick={()=>this.searchCharacter(characterForm)}>
-                              Buscar
-                              <SearchIcon />
-                            </Button>
-                          </Box>
-                            <Box w={[1,1/8]} pt={[1,3]}>
-                        <Button variant='contained' size='large' onClick={this.closeToggleCharacters}>
-                          Cancelar
-                          <ClearIcon />
-                        </Button>
-                          </Box>
-                          </Flex>
-                        </ExpansionPanelSummary>
-                      ) : <div /> }
-                    </Box>
-                  </Flex>
-                </ExpansionPanel>
-              </Paper>
-            </Box>
-          </Flex>
-          {!success && searchData.results ? (
-          <Flex wrap align='center' w={1}>
-            {searchData.results.map((charactersData, index) => (
-              <CharacterContainer data={{charactersData, index}} />
-              ))}
-          </Flex>
-          ) : !success && searchData.error ? (
-            <Flex wrap align='center' w={1}>
-              <Box wrap w={1} p={1}>
-                  <Text alignSelf='center' size='large'>
-                    No se encontraron resultados
-                  </Text>
-              </Box>
-              <Box wrap w={1} p={1}>
-                <NewReleases style={{ fontSize: '100px'}} color='error'/>
-              </Box>
-            </Flex>
-          ) : null
-          }
-        </Flex>
-      )
+                        </Box>
+                        <Box w={[1,1/4]} pt={[1,3]}>
+                          <Button onClick={()=>this.searchCharacter(characterForm)}>
+                            Buscar
+                          </Button>
+                          <Button onClick={this.closeToggleCharacters}>
+                            Cerrar personajes
+                          </Button>
+                        </Box>
+                      </Flex>
+                    </ExpansionPanelSummary>
+                  ) : <div /> }
+                </Box>
+              </Flex>
+            </ExpansionPanel>
+          </Paper>
+        </Box>
+      </Flex>
     )
   }
 }
 
-export default withStyles(styles)(searchPage)
+export default withStyles(styles)(SearchForm)

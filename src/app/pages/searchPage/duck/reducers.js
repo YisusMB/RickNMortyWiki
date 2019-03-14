@@ -18,11 +18,13 @@ const fetchDataSuccess = (state = INITIAL_STATE, {chapters, characters}) => ({
   ...state,
   chapters,
   characters,
+  success: true,
   loading: false
 })
 
 const fetchSearch = (state = INITIAL_STATE) => ({
   ...state,
+  success: false,
   loading: true
 })
 

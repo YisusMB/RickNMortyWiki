@@ -17,7 +17,7 @@ function * fetchData () {
   }
 }
 
-function * fetchSearch (form) {
+function * fetchSearch ({ form }) {
   try {
     const { name, status, gender, specie } = form;
     const searchData = yield fetch(`https://rickandmortyapi.com/api/character/?${(name === '' ? '' : `name=${name}`)}&${(status === '' ? '' : `status=${status}`)}&${(gender === '' ? '' : `gender=${gender}`)}&${(specie === '' ? '' : `specie=${specie}`)}`).then(res=>res.json())
