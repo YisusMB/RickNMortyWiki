@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { searchPageCreators } from './duck'
 
 import { Flex, Box } from 'reflexbox'
+import { Text } from "grommet";
 import { Paper, Button, ExpansionPanel, ExpansionPanelSummary, TextField, MenuItem } from '@material-ui/core'
 import { NewReleases, Search as SearchIcon, Clear as ClearIcon } from '@material-ui/icons'
 import { withStyles } from '@material-ui/core/styles';
@@ -10,49 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Loader from "../../components/Loader"
 import WelcomeHeader from '../../components/WelcomeHeader'
 import CharacterContainer from "../../components/Controlled/CharacterContainer";
-import { Text } from "grommet";
-
-const genders = [
-  {
-    value: '',
-    label: '',
-  },
-  {
-    value: 'male',
-    label: 'Masculino',
-  },
-  {
-    value: 'female',
-    label: 'Femenino',
-  },
-  {
-    value: 'genderless',
-    label: 'Sin genero',
-  },
-  {
-    value: 'unknown',
-    label: 'Desconocido',
-  },
-];
-
-const states = [
-  {
-    value: '',
-    label: '',
-  },
-  {
-    value: 'alive',
-    label: 'Vivo',
-  },
-  {
-    value: 'dead',
-    label: 'Muerto',
-  },
-  {
-    value: 'unknown',
-    label: 'Desconocido',
-  },
-];
+import { genders, states } from '../../helpers/helpers'
 
 const state = state => ({
   characters: state.searchPage.characters,
