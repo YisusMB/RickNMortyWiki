@@ -4,7 +4,7 @@ const { Types, Creators } = createActions({
   fetchData: [''],
   fetchDataSuccess: ['chapters', 'characters'],
   fetchSearch: ['form'],
-  fetchSearchSuccess: ['searchData'],
+  fetchSearchSuccess: ['searchData', 'searchChapter'],
   error: ['']
 }, {
   prefix: `R&M Wiki/searchPage`

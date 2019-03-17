@@ -12,11 +12,13 @@ import Loader from "../../components/Loader"
 import WelcomeHeader from '../../components/WelcomeHeader'
 import CharacterContainer from "../../components/Controlled/CharacterContainer";
 import { genders, states } from '../../helpers/helpers'
+import EpisodeContainer from "../../components/Controlled/EpisodeContainer";
 
 const state = state => ({
   characters: state.searchPage.characters,
   chapters: state.searchPage.chapters,
   searchData: state.searchPage.searchData,
+  searchChapters: state.searchPage.searchChapter,
   success: state.searchPage.success,
   error: state.searchPage.error,
   loading: state.searchPage.loading
@@ -118,14 +120,17 @@ class searchPage extends Component {
     this.setState(prevState => ({
       characterForm: {
         ...prevState.characterForm,
-        name: ''
+        name: '',
+        status: '',
+        gender: '',
+        specie: ''
       }
     }), () => {console.log(this.state.characterForm)})
   };
 
   render() {
     const { toggledChapters, toggledCharacters, characterForm } = this.state;
-    const { loading, classes, searchData, success } = this.props;
+    const { loading, classes, searchData, searchChapters, success } = this.props;
 
     return (
       loading === true ? (
@@ -264,23 +269,51 @@ class searchPage extends Component {
               </Paper>
             </Box>
           </Flex>
-          {!success && searchData.results ? (
-          <Flex wrap align='center' w={1}>
-            {searchData.results.map((charactersData, index) => (
-              <CharacterContainer data={{charactersData, index}} />
-              ))}
-          </Flex>
-          ) : !success && searchData.error ? (
-            <Flex wrap align='center' w={1}>
-              <Box wrap w={1} p={1}>
-                  <Text alignSelf='center' size='large'>
-                    No se encontraron resultados
-                  </Text>
+          {!success ? (
+          <Flex wrap align='baseline' w={1}>
+            <Flex wrap w={[1, 1/2]}>
+              <Box w={1} p={1}>
+                <Paper>
+                  <Text alignSelf='center' size='large'>Capitulos</Text>
+                </Paper>
               </Box>
-              <Box wrap w={1} p={1}>
-                <NewReleases style={{ fontSize: '100px'}} color='error'/>
-              </Box>
+              {searchChapters.error ? (
+                <Flex wrap align='center' w={1}>
+                  <Box wrap w={1} p={1}>
+                    <Text alignSelf='center' size='large'>
+                      No se encontraron resultados
+                    </Text>
+                  </Box>
+                  <Box wrap w={1} p={1}>
+                    <NewReleases style={{ fontSize: '100px'}} color='error'/>
+                  </Box>
+                </Flex>
+              ) : (searchChapters.results.map((episodesData, index) => (
+                <EpisodeContainer data={{episodesData, index}} />
+              )))}
             </Flex>
+            <Flex wrap w={[1, 1/2]}>
+              <Box w={1} p={1}>
+                <Paper>
+                  <Text alignSelf='center' size='large'>Personajes</Text>
+                </Paper>
+              </Box>
+              {searchData.error ? (
+                <Flex wrap align='center' w={1}>
+                  <Box wrap w={1} p={1}>
+                    <Text alignSelf='center' size='large'>
+                      No se encontraron resultados
+                    </Text>
+                  </Box>
+                  <Box wrap w={1} p={1}>
+                    <NewReleases style={{ fontSize: '100px'}} color='error'/>
+                  </Box>
+                </Flex>
+              ) : (searchData.results.map((charactersData, index) => (
+                <CharacterContainer data={{charactersData, index}} />
+              )))}
+            </Flex>
+          </Flex>
           ) : null
           }
         </Flex>

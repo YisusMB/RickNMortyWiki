@@ -28,8 +28,9 @@ const fetchSearch = (state = INITIAL_STATE) => ({
   loading: true
 })
 
-const fetchSearchSuccess = (state = INITIAL_STATE, {searchData}) => ({
+const fetchSearchSuccess = (state = INITIAL_STATE, {searchData, searchChapter}) => ({
   ...state,
+  searchChapter,
   searchData,
   loading: false
 })
