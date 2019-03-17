@@ -11,8 +11,8 @@ stages:
   - staging
 
 before_script:
-  - npm -g config set user root
   - mv env/development.env "./.env.production" -v
+  - npm -g config set user root
   - npm install
   - echo "Running before scripting"
   - npm install -g firebase-tools
