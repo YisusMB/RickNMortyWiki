@@ -130,14 +130,14 @@ class PersistentDrawerLeft extends Component {
           </div>
           <List>
             <Divider/>
-            <Link to='' style={{ textDecoration: 'none' }}>
+            <Link to='' style={{ textDecoration: 'none' }} onClick={this.handleDrawerClose}>
               <ListItem button key='home'>
                 <ListItemIcon><HomeIcon /></ListItemIcon>
                 <ListItemText primary='Inicio' />
               </ListItem>
             </Link>
             <Divider />
-            <Link to='/search' style={{ textDecoration: 'none' }}>
+            <Link to='/search' style={{ textDecoration: 'none' }} onClick={this.handleDrawerClose}>
             <ListItem button key='search'>
               <ListItemIcon><SearchIcon /></ListItemIcon>
               <ListItemText primary='Busqueda' />

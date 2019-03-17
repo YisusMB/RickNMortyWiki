@@ -5,7 +5,7 @@ import { searchPageCreators } from './duck'
 import { Flex, Box } from 'reflexbox'
 import { Text } from "grommet";
 import { Paper, Button, ExpansionPanel, ExpansionPanelSummary, TextField, MenuItem } from '@material-ui/core'
-import { NewReleases, Search as SearchIcon, Clear as ClearIcon } from '@material-ui/icons'
+import { NewReleases, Search as SearchIcon, Clear as ClearIcon, Close as CloseIcon, KeyboardArrowDown as DownIcon, KeyboardArrowUp as UpIcon } from '@material-ui/icons'
 import { withStyles } from '@material-ui/core/styles';
 
 import Loader from "../../components/Loader"
@@ -58,6 +58,9 @@ const styles = theme => ({
   menu: {
     width: 200,
   },
+  extendedIcon: {
+    marginLeft: 10
+  },
 });
 
 @connect(state, dispatch)
@@ -69,8 +72,10 @@ class searchPage extends Component {
   };
 
   toggleSearchCharacters = () => {
+    const toggled = this.state.toggledCharacters;
+
     this.setState({
-      toggledCharacters: true
+      toggledCharacters: (toggled !== true ? true : false)
     });
   };
 
@@ -109,6 +114,15 @@ class searchPage extends Component {
     );
   };
 
+  clearNameField = () => {
+    this.setState(prevState => ({
+      characterForm: {
+        ...prevState.characterForm,
+        name: ''
+      }
+    }), () => {console.log(this.state.characterForm)})
+  };
+
   render() {
     const { toggledChapters, toggledCharacters, characterForm } = this.state;
     const { loading, classes, searchData, success } = this.props;
@@ -127,14 +141,32 @@ class searchPage extends Component {
             <Box w={1} p={1}>
               <Paper>
                 <Flex wrap align='baseline' w={1}>
-                  <Box w={1/2} p={1}>
-                    <Button variant="contained" size='large' onClick={this.toggleSearchCharacters} disabled={toggledChapters || toggledCharacters} color='secondary'>
-                      Personajes
-                    </Button>
+                  <Box w={[1, 6/8]} p={1}>
+                    <form>
+                      <TextField
+                        id="outlined-name"
+                        label="Nombre"
+                        fullWidth
+                        disabled={(toggledCharacters)}
+                        className={classes.textField}
+                        value={characterForm.name}
+                        onChange={this.handleChange('name')}
+                        margin="normal"
+                        variant="outlined"
+                      />
+                    </form>
                   </Box>
-                  <Box w={1/2} p={1}>
-                    <Button variant='contained' size='large' onClick={this.toggleSearchChapters} disabled={toggledChapters || toggledCharacters} color='primary'>
-                      Capitulos
+                  <Box w={[1, 2/8]} p={1} m='auto'>
+                    <Button style={{ margin: '1vh' }} variant='contained' onClick={()=>this.searchCharacter(characterForm)} disabled={toggledChapters || toggledCharacters} color='primary'>
+                      Buscar
+                      <SearchIcon className={classes.extendedIcon}/>
+                    </Button>
+                    <Button style={{ margin: '1vh' }} variant='contained' onClick={this.clearNameField} disabled={toggledChapters || toggledCharacters} color='primary'>
+                      <CloseIcon />
+                    </Button>
+                    <Button style={{ margin: '1vh' }} variant='contained' onClick={this.toggleSearchCharacters} color='primary'>
+                      Busqueda avanzada
+                      {toggledCharacters ? (<UpIcon />) : <DownIcon />}
                     </Button>
                   </Box>
                 </Flex>
@@ -202,15 +234,6 @@ class searchPage extends Component {
                                 </TextField>
                                 <TextField
                                   id="outlined-name"
-                                  label="Tipo"
-                                  className={classes.textField}
-                                  value={characterForm.type}
-                                  onChange={this.handleChange('type')}
-                                  margin="normal"
-                                  variant="outlined"
-                                />
-                                <TextField
-                                  id="outlined-name"
                                   label="Especie"
                                   className={classes.textField}
                                   value={characterForm.specie}
@@ -227,7 +250,7 @@ class searchPage extends Component {
                               </Button>
                             </Box>
                             <Box w={[1,1/8]} pt={[1,3]}>
-                              <Button variant='contained' size='large' onClick={this.closeToggleCharacters}>
+                              <Button variant='contained' size='large' onClick={() => {this.closeToggleCharacters(); this.clearNameField()}}>
                                 Cancelar
                                 <ClearIcon />
                               </Button>
