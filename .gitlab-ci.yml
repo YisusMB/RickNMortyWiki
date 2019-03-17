@@ -5,13 +5,12 @@ variables:
 
 cache:
   paths:
-    - node_modules/
+    - C:\Users\flixt\Desktop\Rick\rickandmortyweb\node_modules
 
 stages:
   - staging
 
 before_script:
-  - mv env/development.env "./.env.production" -v
   - npm -g config set user root
   - npm install
   - echo "Running before scripting"
