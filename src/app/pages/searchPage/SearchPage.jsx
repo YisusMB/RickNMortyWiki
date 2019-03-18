@@ -69,15 +69,6 @@ const styles = theme => ({
   Toggles: {
     backgroundColor: 'rgb(23,24,28)'
   },
-  cssRoot: {
-    backgroundColor: 'rgb(42, 55, 122)',
-    '&:hover': {
-      backgroundColor: '#fff',
-    },
-    '&:disabled': {
-      backgroundColor: 'rgba(0, 0, 0, 0.12)',
-    },
-  },
 });
 
 @connect(state, dispatch)
@@ -177,15 +168,15 @@ class searchPage extends Component {
                     </form>
                   </Box>
                   <Box w={[1, 2/8]} p={1} m='auto'>
-                    <Button className={classes.cssRoot} style={{ margin: '1vh' }} variant='contained' onClick={()=>this.searchCharacter(characterForm)} disabled={toggledChapters || toggledCharacters} color='primary'>
-                      <Text size='0.825rem' color='rgba(232, 231, 227, 0.87)'>Buscar</Text>
+                    <Button style={{ margin: '1vh' }} variant='contained' onClick={()=>this.searchCharacter(characterForm)} disabled={toggledChapters || toggledCharacters} color='primary'>
+                      Buscar
                       <SearchIcon className={classes.extendedIcon}/>
                     </Button>
-                    <Button style={{ backgroundColor: 'rgb(42, 55, 122)', margin: '1vh' }} variant='contained' onClick={this.clearNameField} disabled={toggledChapters || toggledCharacters} color='primary'>
+                    <Button style={{ margin: '1vh' }} variant='contained' onClick={this.clearNameField} disabled={toggledChapters || toggledCharacters} color='primary'>
                       <CloseIcon />
                     </Button>
-                    <Button style={{ backgroundColor: 'rgb(42, 55, 122)', margin: '1vh' }} variant='contained' onClick={this.toggleSearchCharacters} color='primary'>
-                      <Text size='0.825rem' color='rgba(232, 231, 227, 0.87)'>Busqueda avanzada</Text>
+                    <Button style={{ margin: '1vh' }} variant='contained' onClick={this.toggleSearchCharacters} color='primary'>
+                      Busqueda avanzada
                       {toggledCharacters ? (<UpIcon />) : <DownIcon />}
                     </Button>
                   </Box>
@@ -264,14 +255,14 @@ class searchPage extends Component {
                               </form>
                             </Box>
                             <Box w={[1,1/8]} pt={[1,3]}>
-                              <Button style={{ backgroundColor: 'rgb(42, 55, 122)' }} variant='contained' size='large' onClick={()=>this.searchCharacter(characterForm)}>
-                                <Text size='0.825rem' color='rgba(232, 231, 227, 0.87)'>Buscar</Text>
+                              <Button color={'primary'} variant='contained' size='large' onClick={()=>this.searchCharacter(characterForm)}>
+                                Buscar
                                 <SearchIcon />
                               </Button>
                             </Box>
                             <Box w={[1,1/8]} pt={[1,3]}>
-                              <Button style={{ backgroundColor: 'rgb(31, 33, 39)' }} variant='contained' size='large' onClick={() => {this.closeToggleCharacters(); this.clearNameField()}}>
-                                <Text size='0.825rem' color='rgba(232, 231, 227, 0.87)'>Cancelar</Text>
+                              <Button variant='contained' size='large' onClick={() => {this.closeToggleCharacters(); this.clearNameField()}}>
+                                Cancelar
                                 <ClearIcon />
                               </Button>
                             </Box>
