@@ -63,6 +63,21 @@ const styles = theme => ({
   extendedIcon: {
     marginLeft: 10
   },
+  PaperRoot: {
+    backgroundColor: 'rgb(23,24,28)'
+  },
+  Toggles: {
+    backgroundColor: 'rgb(23,24,28)'
+  },
+  cssRoot: {
+    backgroundColor: 'rgb(42, 55, 122)',
+    '&:hover': {
+      backgroundColor: '#fff',
+    },
+    '&:disabled': {
+      backgroundColor: 'rgba(0, 0, 0, 0.12)',
+    },
+  },
 });
 
 @connect(state, dispatch)
@@ -144,7 +159,7 @@ class searchPage extends Component {
           </Flex>
           <Flex wrap align='baseline' w={1}>
             <Box w={1} p={1}>
-              <Paper>
+              <Paper className={classes.PaperRoot}>
                 <Flex wrap align='baseline' w={1}>
                   <Box w={[1, 6/8]} p={1}>
                     <form>
@@ -162,20 +177,20 @@ class searchPage extends Component {
                     </form>
                   </Box>
                   <Box w={[1, 2/8]} p={1} m='auto'>
-                    <Button style={{ margin: '1vh' }} variant='contained' onClick={()=>this.searchCharacter(characterForm)} disabled={toggledChapters || toggledCharacters} color='primary'>
-                      Buscar
+                    <Button className={classes.cssRoot} style={{ margin: '1vh' }} variant='contained' onClick={()=>this.searchCharacter(characterForm)} disabled={toggledChapters || toggledCharacters} color='primary'>
+                      <Text size='0.825rem' color='rgba(232, 231, 227, 0.87)'>Buscar</Text>
                       <SearchIcon className={classes.extendedIcon}/>
                     </Button>
-                    <Button style={{ margin: '1vh' }} variant='contained' onClick={this.clearNameField} disabled={toggledChapters || toggledCharacters} color='primary'>
+                    <Button style={{ backgroundColor: 'rgb(42, 55, 122)', margin: '1vh' }} variant='contained' onClick={this.clearNameField} disabled={toggledChapters || toggledCharacters} color='primary'>
                       <CloseIcon />
                     </Button>
-                    <Button style={{ margin: '1vh' }} variant='contained' onClick={this.toggleSearchCharacters} color='primary'>
-                      Busqueda avanzada
+                    <Button style={{ backgroundColor: 'rgb(42, 55, 122)', margin: '1vh' }} variant='contained' onClick={this.toggleSearchCharacters} color='primary'>
+                      <Text size='0.825rem' color='rgba(232, 231, 227, 0.87)'>Busqueda avanzada</Text>
                       {toggledCharacters ? (<UpIcon />) : <DownIcon />}
                     </Button>
                   </Box>
                 </Flex>
-                <ExpansionPanel expanded={toggledCharacters || toggledChapters}>
+                <ExpansionPanel className={classes.Toggles} expanded={toggledCharacters || toggledChapters}>
                   <Flex>
                     <Box w={1}>
                       {toggledChapters === true ? (
@@ -249,14 +264,14 @@ class searchPage extends Component {
                               </form>
                             </Box>
                             <Box w={[1,1/8]} pt={[1,3]}>
-                              <Button color='primary' variant='contained' size='large' onClick={()=>this.searchCharacter(characterForm)}>
-                                Buscar
+                              <Button style={{ backgroundColor: 'rgb(42, 55, 122)' }} variant='contained' size='large' onClick={()=>this.searchCharacter(characterForm)}>
+                                <Text size='0.825rem' color='rgba(232, 231, 227, 0.87)'>Buscar</Text>
                                 <SearchIcon />
                               </Button>
                             </Box>
                             <Box w={[1,1/8]} pt={[1,3]}>
-                              <Button variant='contained' size='large' onClick={() => {this.closeToggleCharacters(); this.clearNameField()}}>
-                                Cancelar
+                              <Button style={{ backgroundColor: 'rgb(31, 33, 39)' }} variant='contained' size='large' onClick={() => {this.closeToggleCharacters(); this.clearNameField()}}>
+                                <Text size='0.825rem' color='rgba(232, 231, 227, 0.87)'>Cancelar</Text>
                                 <ClearIcon />
                               </Button>
                             </Box>
@@ -273,8 +288,8 @@ class searchPage extends Component {
           <Flex wrap align='baseline' w={1}>
             <Flex wrap w={[1, 1/2]}>
               <Box w={1} p={1}>
-                <Paper>
-                  <Text alignSelf='center' size='large'>Capitulos</Text>
+                <Paper className={classes.PaperRoot}>
+                  <Text color='rgba(232, 231, 227, 0.87)' alignSelf='center' size='large'>Capitulos</Text>
                 </Paper>
               </Box>
               {searchChapters.error ? (
@@ -294,8 +309,8 @@ class searchPage extends Component {
             </Flex>
             <Flex wrap w={[1, 1/2]}>
               <Box w={1} p={1}>
-                <Paper>
-                  <Text alignSelf='center' size='large'>Personajes</Text>
+                <Paper className={classes.PaperRoot}>
+                  <Text color='rgba(232, 231, 227, 0.87)' alignSelf='center' size='large'>Personajes</Text>
                 </Paper>
               </Box>
               {searchData.error ? (

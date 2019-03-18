@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { landingPageCreators } from './duck'
+import { withStyles } from "@material-ui/core/styles";
 
 import { Flex, Box } from 'reflexbox'
+import { Text } from "grommet";
 import { Paper } from '@material-ui/core'
 
 import Loader from "../../components/Loader"
 import CharacterContainer from '../../components/Controlled/CharacterContainer'
 import WelcomeHeader from '../../components/WelcomeHeader'
-import TextControlled from "../../components/Controlled/TextControlled"
 import EpisodeContainer from "../../components/Controlled/EpisodeContainer"
+
+const styles = theme => ({
+  root: {
+    ...theme.mixins.gutters(),
+    backgroundColor: 'rgb(23,24,28)'
+  },
+});
 
 const state = state => ({
   characters: state.landingPage.characters,
@@ -37,7 +45,7 @@ class LandingPage extends Component {
   };
 
   render() {
-    const { chapters, characters, loading } = this.props;
+    const { chapters, characters, loading, classes } = this.props;
 
     return (
       loading === true ? (
@@ -52,8 +60,8 @@ class LandingPage extends Component {
           <Flex wrap align='baseline' w={1}>
             <Flex wrap w={[1, 1/2]}>
             <Box w={1} p={1}>
-              <Paper>
-                <TextControlled needStyle padding={{padding: '10px'}} content='CHECK OUT CHAPTERS'/>
+              <Paper className={classes.root}>
+                <div style={{ padding: '10px' }}><Text color='rgba(232, 231, 227, 0.87)'>CHECK OUT CHAPTERS</Text></div>
               </Paper>
             </Box>
             {chapters.results.map((episodesData, index) => (
@@ -62,8 +70,8 @@ class LandingPage extends Component {
             </Flex>
             <Flex wrap w={[1, 1/2]}>
               <Box w={1} p={1}>
-                <Paper>
-                  <TextControlled needStyle padding={{padding: '10px'}} content='CHECK OUT CHARACTERS'/>
+                <Paper className={classes.root}>
+                  <div style={{ padding: '10px' }}><Text color='rgba(232, 231, 227, 0.87)'>CHECK OUT CHARACTERS</Text></div>
                 </Paper>
               </Box>
               {characters.results.map((charactersData, index) => (
@@ -77,4 +85,4 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage
+export default withStyles(styles)(LandingPage)

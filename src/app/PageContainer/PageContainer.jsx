@@ -14,18 +14,21 @@ import { Link } from 'react-router-dom'
 import LandingPage from '../pages/landingPage/LandingPage'
 import Root from '../Root'
 import logo from '../assets/img/logo.png'
+import { Text } from "grommet";
 
 const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
     display: 'flex',
+    backgroundColor: 'rgb(25,26,29)'
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    backgroundColor: 'rgb(42,55,122)'
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -48,6 +51,7 @@ const styles = theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    backgroundColor: 'rgb(23,24,28)'
   },
   drawerHeader: {
     display: 'flex',
@@ -72,6 +76,11 @@ const styles = theme => ({
     }),
     marginLeft: 0,
   },
+  MuiTypography: {
+    ListItemSidebar: {
+      color: 'rgba(232, 231, 227, 0.87)'
+    }
+  }
 });
 
 class PersistentDrawerLeft extends Component {
@@ -125,22 +134,22 @@ class PersistentDrawerLeft extends Component {
         >
           <div className={classes.drawerHeader}>
             <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              {theme.direction === 'ltr' ? <ChevronLeftIcon style={{ color: 'rgba(232, 231, 227, 0.54)'}}/> : <ChevronRightIcon style={{ color: 'rgba(232, 231, 227, 0.54)'}} />}
             </IconButton>
           </div>
           <List>
             <Divider/>
             <Link to='' style={{ textDecoration: 'none' }} onClick={this.handleDrawerClose}>
               <ListItem button key='home'>
-                <ListItemIcon><HomeIcon /></ListItemIcon>
-                <ListItemText primary='Inicio' />
+                <ListItemIcon><HomeIcon style={{ color: 'rgba(232, 231, 227, 0.54)'}} /></ListItemIcon>
+                <ListItemText><Text size='1rem' color='rgba(232, 231, 227, 0.87)'>Inicio</Text></ListItemText>
               </ListItem>
             </Link>
             <Divider />
             <Link to='/search' style={{ textDecoration: 'none' }} onClick={this.handleDrawerClose}>
             <ListItem button key='search'>
-              <ListItemIcon><SearchIcon /></ListItemIcon>
-              <ListItemText primary='Busqueda' />
+              <ListItemIcon><SearchIcon style={{ color: 'rgba(232, 231, 227, 0.54)'}} /></ListItemIcon>
+              <ListItemText><Text size='1rem' color='rgba(232, 231, 227, 0.87)'>Buscar</Text></ListItemText>
             </ListItem>
           </Link>
             <Divider/>
