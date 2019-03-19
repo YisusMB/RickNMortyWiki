@@ -6,7 +6,9 @@ import {
   Menu as MenuIcon,
   Search as SearchIcon,
   ChevronRight as ChevronRightIcon,
-  ChevronLeft as ChevronLeftIcon
+  ChevronLeft as ChevronLeftIcon,
+  SupervisorAccount as CharacterIcon,
+  Theaters as ChapterIcon
 } from '@material-ui/icons'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
@@ -80,6 +82,9 @@ const styles = theme => ({
     ListItemSidebar: {
       color: 'rgba(232, 231, 227, 0.87)'
     }
+  },
+  DividerBar: {
+    backgroundColor: 'rgba(38, 36, 31, 0.87)'
   }
 });
 
@@ -138,21 +143,34 @@ class PersistentDrawerLeft extends Component {
             </IconButton>
           </div>
           <List>
-            <Divider/>
+            <Divider className={classes.DividerBar}/>
             <Link to='' style={{ textDecoration: 'none' }} onClick={this.handleDrawerClose}>
               <ListItem button key='home'>
                 <ListItemIcon><HomeIcon style={{ color: 'rgba(232, 231, 227, 0.54)'}} /></ListItemIcon>
                 <ListItemText><Text size='1rem' color='rgba(232, 231, 227, 0.87)'>Inicio</Text></ListItemText>
               </ListItem>
             </Link>
-            <Divider />
+            <Divider className={classes.DividerBar}/>
             <Link to='/search' style={{ textDecoration: 'none' }} onClick={this.handleDrawerClose}>
             <ListItem button key='search'>
               <ListItemIcon><SearchIcon style={{ color: 'rgba(232, 231, 227, 0.54)'}} /></ListItemIcon>
               <ListItemText><Text size='1rem' color='rgba(232, 231, 227, 0.87)'>Buscar</Text></ListItemText>
             </ListItem>
           </Link>
-            <Divider/>
+            <Divider className={classes.DividerBar}/>
+            <Link to='/characters' style={{ textDecoration: 'none' }} onClick={this.handleDrawerClose}>
+              <ListItem button key='characters'>
+                <ListItemIcon><CharacterIcon style={{ color: 'rgba(232, 231, 227, 0.54)'}} /></ListItemIcon>
+                <ListItemText><Text size='1rem' color='rgba(232, 231, 227, 0.87)'>Personajes</Text></ListItemText>
+              </ListItem>
+            </Link>
+            <Divider className={classes.DividerBar}/>
+            <Link to='/chapters' style={{ textDecoration: 'none' }} onClick={this.handleDrawerClose}>
+              <ListItem button key='chapters'>
+                <ListItemIcon><ChapterIcon style={{ color: 'rgba(232, 231, 227, 0.54)'}} /></ListItemIcon>
+                <ListItemText><Text size='1rem' color='rgba(232, 231, 227, 0.87)'>Capitulos</Text></ListItemText>
+              </ListItem>
+            </Link>
           </List>
         </Drawer>
         <main
