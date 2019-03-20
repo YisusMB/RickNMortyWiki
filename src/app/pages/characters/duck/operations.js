@@ -2,11 +2,11 @@ import { createActions } from 'reduxsauce'
 
 const { Types, Creators } = createActions({
   fetchCharacters: [''],
-  fetchCharactersSuccess: ['chapters'],
+  fetchCharactersSuccess: ['characters'],
   fetchNextPage: ['page'],
   error: ['']
 }, {
-  prefix: `R&M Wiki/chaptersPage`
+  prefix: `R&M Wiki/charactersPage`
 });
 
 export { Creators, Types }

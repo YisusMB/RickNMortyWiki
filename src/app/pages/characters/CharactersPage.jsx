@@ -9,7 +9,7 @@ import CharacterContainer from "../../components/Controlled/CharacterContainer";
 import {KeyboardArrowLeft as PrevIcon, KeyboardArrowRight as NextIcon} from "@material-ui/icons";
 
 const state = state => ({
-  characters: state.charactersPage.chapters,
+  characters: state.charactersPage.characters,
   error: state.charactersPage.error,
   loading: state.charactersPage.loading
 });

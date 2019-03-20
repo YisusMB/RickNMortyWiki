@@ -2,7 +2,7 @@ import { createReducer } from 'reduxsauce'
 import { Types } from './operations'
 
 const INITIAL_STATE = {
-  chapters: [],
+  characters: [],
   success: false,
   error: false,
   loading: true
@@ -18,9 +18,9 @@ const fetchNextPage = (state = INITIAL_STATE) => ({
   loading: true
 })
 
-const fetchCharactersSuccess = (state = INITIAL_STATE, {chapters}) => ({
+const fetchCharactersSuccess = (state = INITIAL_STATE, {characters}) => ({
   ...state,
-  chapters,
+  characters,
   loading: false
 })
 
