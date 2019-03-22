@@ -3,6 +3,7 @@ import { Divider, List, ListItem, Paper } from "@material-ui/core";
 import { Text } from "grommet";
 import { Box } from "reflexbox";
 import { withStyles } from "@material-ui/core/styles";
+import {Link} from "react-router-dom";
 
 const styles = theme => ({
   root: {
@@ -28,7 +29,8 @@ class CharacterContainer extends Component {
               <ListItem key={`characterName_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Nombre: ${charactersData.name}`}</Text></ListItem><Divider className={classes.divider}/>
               <ListItem key={`characterOrigin_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Origen: ${(charactersData.origin.name === 'unknown' ? 'Desconocido' : charactersData.origin.name)}`}</Text></ListItem><Divider className={classes.divider}/>
               <ListItem key={`characterSpecies_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Especie: ${(charactersData.species === 'unknown' ? 'Desconocido' : charactersData.species)}`}</Text></ListItem><Divider className={classes.divider}/>
-              <ListItem key={`characterStatus_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Estatus: ${(charactersData.status === 'unknown' ? 'Desconocido' : charactersData.status)}`}</Text></ListItem>
+              <ListItem key={`characterStatus_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Estatus: ${(charactersData.status === 'unknown' ? 'Desconocido' : charactersData.status)}`}</Text></ListItem><Divider className={classes.divider}/>
+              <Link style={{ textDecoration: 'none' }} to={`character/${charactersData.id}`}><ListItem  key={`characterSpecies_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Mas informacion`}</Text></ListItem></Link>
             </List>
           </Paper>
         </div>
