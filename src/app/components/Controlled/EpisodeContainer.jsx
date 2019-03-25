@@ -21,16 +21,15 @@ class EpisodeContainer extends Component {
     const { episodesData, index } = this.props.data;
     return (
       <Box key={`key_${episodesData.id}`} className={`BoxCharacter_${episodesData.id}`} w={[ 1, 1/2 ]} p={1}>
-        <Paper className={classes.root}>
           <div>
+            <div style={{ border: '1px solid rgba(38, 36, 31, 0.87)', borderRadius: '16px' }}>
             <List>
               <ListItem style={{ maxWidth: '100%' }} key={`idCharacter_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Nombre: ${episodesData.name}`}</Text></ListItem><Divider className={classes.divider}/>
               <ListItem style={{ maxWidth: '100%' }} key={`characterName_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Episodio: #${episodesData.id}`}</Text></ListItem><Divider className={classes.divider}/>
-              <ListItem style={{ maxWidth: '100%' }} key={`characterOrigin_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Se transmitio: ${episodesData.air_date}`}</Text></ListItem><Divider className={classes.divider}/>
-              <Link style={{ textDecoration: 'none' }} to={`chapter/${episodesData.id}`}><ListItem  key={`characterSpecies_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Mas informacion`}</Text></ListItem></Link>
+              <ListItem style={{ maxWidth: '100%' }} key={`characterOrigin_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Se transmitio: ${episodesData.air_date}`}</Text></ListItem>
             </List>
+            </div>
           </div>
-        </Paper>
       </Box>
     )
   }

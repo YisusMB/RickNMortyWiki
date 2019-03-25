@@ -60,9 +60,7 @@ class LandingPage extends Component {
           <Flex wrap align='baseline' w={1}>
             <Flex wrap w={[1, 1/2]}>
             <Box w={1} p={1}>
-              <Paper className={classes.root}>
-                <div style={{ padding: '10px' }}><Text color='rgba(232, 231, 227, 0.87)'>CHECK OUT CHAPTERS</Text></div>
-              </Paper>
+                <Text color='rgba(232, 231, 227, 0.87)'>CHECK OUT CHAPTERS</Text>
             </Box>
             {chapters.results.map((episodesData, index) => (
               <EpisodeContainer data={{episodesData, index}}/>
@@ -70,9 +68,7 @@ class LandingPage extends Component {
             </Flex>
             <Flex wrap w={[1, 1/2]}>
               <Box w={1} p={1}>
-                <Paper className={classes.root}>
-                  <div style={{ padding: '10px' }}><Text color='rgba(232, 231, 227, 0.87)'>CHECK OUT CHARACTERS</Text></div>
-                </Paper>
+                  <Text color='rgba(232, 231, 227, 0.87)'>CHECK OUT CHARACTERS</Text>
               </Box>
               {characters.results.map((charactersData, index) => (
                 <CharacterContainer data={{charactersData, index}}/>

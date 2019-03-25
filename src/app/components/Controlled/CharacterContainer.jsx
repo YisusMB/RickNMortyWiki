@@ -21,8 +21,7 @@ class CharacterContainer extends Component {
     return (
       <Box key={`key_${charactersData.id}`} className={`BoxCharacter_${charactersData.id}`} w={[ 1, 1/2, 1/4 ]} p={1}>
         <div>
-          {/*<div style={{ border: '1px solid rgba(38, 36, 31, 0.87)', borderRadius: '16px' }}>*/}
-          <Paper className={classes.root}>
+          <div style={{ border: '1px solid rgba(38, 36, 31, 0.87)', borderRadius: '16px' }}>
             <img style={{ margin: 'auto', maxWidth: '100%' }} alt={`character_${charactersData.name}`} src={charactersData.image}/>
             <List>
               <ListItem key={`idCharacter_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Id: ${charactersData.id}`}</Text></ListItem><Divider className={classes.divider}/>
@@ -32,7 +31,7 @@ class CharacterContainer extends Component {
               <ListItem key={`characterStatus_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Estatus: ${(charactersData.status === 'unknown' ? 'Desconocido' : charactersData.status)}`}</Text></ListItem><Divider className={classes.divider}/>
               <Link style={{ textDecoration: 'none' }} to={`character/${charactersData.id}`}><ListItem  key={`characterSpecies_${index}`}><Text color='rgba(232, 231, 227, 0.87)'>{`Mas informacion`}</Text></ListItem></Link>
             </List>
-          </Paper>
+          </div>
         </div>
       </Box>
     )

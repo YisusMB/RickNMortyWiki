@@ -6,7 +6,8 @@ import { Flex, Box } from 'reflexbox'
 import { Text } from "grommet";
 import { Paper, Button, ExpansionPanel, ExpansionPanelSummary, TextField, MenuItem } from '@material-ui/core'
 import { NewReleases, Search as SearchIcon, Clear as ClearIcon, Close as CloseIcon, KeyboardArrowDown as DownIcon, KeyboardArrowUp as UpIcon } from '@material-ui/icons'
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles'
+import purple from '@material-ui/core/colors/purple';
 
 import Loader from "../../components/Loader"
 import WelcomeHeader from '../../components/WelcomeHeader'
@@ -68,6 +69,22 @@ const styles = theme => ({
   },
   Toggles: {
     backgroundColor: 'rgb(23,24,28)'
+  },
+  cssFocused: {},
+  input: {
+    color: 'rgba(232, 231, 227, 0.87)',
+
+    '&$cssFocused $notchedOutline': {
+      borderColor: `green !important`,
+    },
+  },
+  inputLabel: {
+    color: 'rgba(232, 231, 227, 0.87)',
+    borderColor: 'rgba(232, 231, 227, 0.87)'
+  },
+  notchedOutline: {
+    borderWidth: '1px',
+    borderColor: 'green !important'
   },
 });
 
@@ -150,7 +167,7 @@ class searchPage extends Component {
           </Flex>
           <Flex wrap align='baseline' w={1}>
             <Box w={1} p={1}>
-              <Paper className={classes.PaperRoot}>
+              <div style={{ border: '1px solid rgba(38, 36, 31, 0.87)', borderRadius: '16px' }}>
                 <Flex wrap align='baseline' w={1}>
                   <Box w={[1, 6/8]} p={1}>
                     <form>
@@ -160,6 +177,12 @@ class searchPage extends Component {
                         fullWidth
                         disabled={(toggledCharacters)}
                         className={classes.textField}
+                        InputLabelProps={{
+                          className: classes.inputLabel
+                        }}
+                        InputProps={{
+                          className: classes.input
+                        }}
                         value={characterForm.name}
                         onChange={this.handleChange('name')}
                         margin="normal"
@@ -200,6 +223,12 @@ class searchPage extends Component {
                                   label="Nombre"
                                   className={classes.textField}
                                   value={characterForm.name}
+                                  InputLabelProps={{
+                                    className: classes.inputLabel
+                                  }}
+                                  InputProps={{
+                                    className: classes.input
+                                  }}
                                   onChange={this.handleChange('name')}
                                   margin="normal"
                                   variant="outlined"
@@ -211,6 +240,12 @@ class searchPage extends Component {
                                   label="Estatus"
                                   className={classes.textField}
                                   value={characterForm.status}
+                                  InputLabelProps={{
+                                    className: classes.inputLabel
+                                  }}
+                                  InputProps={{
+                                    className: classes.input
+                                  }}
                                   onChange={this.handleChange('status')}
                                   margin="normal"
                                   variant="outlined"
@@ -228,6 +263,12 @@ class searchPage extends Component {
                                   select
                                   className={classes.textField}
                                   value={characterForm.gender}
+                                  InputLabelProps={{
+                                    className: classes.inputLabel
+                                  }}
+                                  InputProps={{
+                                    className: classes.input
+                                  }}
                                   onChange={this.handleChange('gender')}
                                   SelectProps={{
                                     MenuProps: {
@@ -248,6 +289,12 @@ class searchPage extends Component {
                                   label="Especie"
                                   className={classes.textField}
                                   value={characterForm.specie}
+                                  InputLabelProps={{
+                                    className: classes.inputLabel
+                                  }}
+                                  InputProps={{
+                                    className: classes.input
+                                  }}
                                   onChange={this.handleChange('specie')}
                                   margin="normal"
                                   variant="outlined"
@@ -272,7 +319,7 @@ class searchPage extends Component {
                     </Box>
                   </Flex>
                 </ExpansionPanel>
-              </Paper>
+              </div>
             </Box>
           </Flex>
           {!success ? (
@@ -286,7 +333,7 @@ class searchPage extends Component {
               {searchChapters.error ? (
                 <Flex wrap align='center' w={1}>
                   <Box wrap w={1} p={1}>
-                    <Text alignSelf='center' size='large'>
+                    <Text color='rgba(232, 231, 227, 0.87)' alignSelf='center' size='large'>
                       No se encontraron resultados
                     </Text>
                   </Box>
@@ -307,7 +354,7 @@ class searchPage extends Component {
               {searchData.error ? (
                 <Flex wrap align='center' w={1}>
                   <Box wrap w={1} p={1}>
-                    <Text alignSelf='center' size='large'>
+                    <Text color='rgba(232, 231, 227, 0.87)' alignSelf='center' size='large'>
                       No se encontraron resultados
                     </Text>
                   </Box>

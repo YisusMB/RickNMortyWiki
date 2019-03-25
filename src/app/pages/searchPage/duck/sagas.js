@@ -20,7 +20,7 @@ function * fetchData () {
 function * fetchSearch ({ form }) {
   try {
     const { name, status, gender, specie } = form;
-    const searchData = yield fetch(`https://rickandmortyapi.com/api/character/?${(name === '' ? 'name=UNRESOLVED_NAME' : `name=${name}`)}&${(status === '' ? '' : `status=${status}`)}&${(gender === '' ? '' : `gender=${gender}`)}&${(specie === '' ? '' : `specie=${specie}`)}`).then(res=>res.json());
+    const searchData = yield fetch(`https://rickandmortyapi.com/api/character/?${(name === '' ? '' : `name=${name}`)}&${(status === '' ? '' : `status=${status}`)}&${(gender === '' ? '' : `gender=${gender}`)}&${(specie === '' ? '' : `specie=${specie}`)}`).then(res=>res.json());
     const searchChapter = yield fetch(`https://rickandmortyapi.com/api/episode/${(name === '' ? 'UNRESOLVED_NAME' : typeof name == 'number' ? name : `?name=${name}` )}`).then(res=>res.json());
     if (!searchData || !searchChapter) {
       return

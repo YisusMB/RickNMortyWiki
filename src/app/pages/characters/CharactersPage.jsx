@@ -33,6 +33,7 @@ class CharactersPage extends Component {
 
   render() {
     const { loading, characters } = this.props;
+    console.log(this.props);
     return (
       loading === true ? (<Loader />) : (
         <Flex w={1} p={1} align='center' wrap>
